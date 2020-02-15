@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xgblack.crawler.dao.JdItemDao">
+
+    <resultMap type="cn.xgblack.crawler.entity.JdItem" id="JdItemMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="spu" column="spu" jdbcType="INTEGER"/>
+        <result property="sku" column="sku" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="INTEGER"/>
+        <result property="pic" column="pic" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="created" column="created" jdbcType="TIMESTAMP"/>
+        <result property="updated" column="updated" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="JdItemMap">
+        select
+          id, spu, sku, title, price, pic, url, created, updated
+        from crawlerstu.jd_item
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="JdItemMap">
+        select
+          id, spu, sku, title, price, pic, url, created, updated
+        from crawlerstu.jd_item
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="JdItemMap">
+        select
+          id, spu, sku, title, price, pic, url, created, updated
+        from crawlerstu.jd_item
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="spu != null">
+                and spu = #{spu}
+            </if>
+            <if test="sku != null">
+                and sku = #{sku}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="pic != null and pic != ''">
+                and pic = #{pic}
+            </if>
+            <if test="url != null and url != ''">
+                and url = #{url}
+            </if>
+            <if test="created != null">
+                and created = #{created}
+            </if>
+            <if test="updated != null">
+                and updated = #{updated}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into crawlerstu.jd_item(spu, sku, title, price, pic, url, created, updated)
+        values (#{spu}, #{sku}, #{title}, #{price}, #{pic}, #{url}, #{created}, #{updated})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update crawlerstu.jd_item
+        <set>
+            <if test="spu != null">
+                spu = #{spu},
+            </if>
+            <if test="sku != null">
+                sku = #{sku},
+            </if>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="pic != null and pic != ''">
+                pic = #{pic},
+            </if>
+            <if test="url != null and url != ''">
+                url = #{url},
+            </if>
+            <if test="created != null">
+                created = #{created},
+            </if>
+            <if test="updated != null">
+                updated = #{updated},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from crawlerstu.jd_item where id = #{id}
+    </delete>
+
+</mapper>
