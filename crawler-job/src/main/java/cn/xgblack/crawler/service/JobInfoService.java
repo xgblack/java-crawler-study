@@ -36,6 +36,8 @@ public interface JobInfoService {
      */
     List<JobInfo> queryAll(JobInfo jobInfo);
 
+    public void save(JobInfo jobInfo);
+
     /**
      * 新增数据
      *

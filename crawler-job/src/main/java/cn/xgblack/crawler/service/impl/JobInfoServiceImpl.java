@@ -4,6 +4,7 @@ import cn.xgblack.crawler.entity.JobInfo;
 import cn.xgblack.crawler.mapper.JobInfoDao;
 import cn.xgblack.crawler.service.JobInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -45,6 +46,26 @@ public class JobInfoServiceImpl implements JobInfoService {
     @Override
     public List<JobInfo> queryAll(JobInfo jobInfo) {
         return this.jobInfoDao.queryAll(jobInfo);
+    }
+
+    @Override
+    @Transactional
+    public void save(JobInfo jobInfo) {
+        //根据url查询数据
+        JobInfo param = new JobInfo();
+        param.setUrl(jobInfo.getUrl());
+        List<JobInfo> jobs = queryAll(param);
+        if (jobs.size() == 0) {
+            //如果数据不存在,需要新增
+            this.jobInfoDao.insert(jobInfo);
+        } else {
+            //已存在，需要更新
+            for (JobInfo job : jobs) {
+                if (job.getTime() == null || !job.getTime().equals(jobInfo.getTime())) {
+                    this.jobInfoDao.update(jobInfo);
+                }
+            }
+        }
     }
 
     /**
