@@ -25,7 +25,7 @@ public class CrawlerConfigTest {
                 .build();
         //给请求设置请求信息
         httpGet.setConfig(config);
-        
+
         System.out.println("发起请求的信息：" + httpGet);
         CloseableHttpResponse response = null;
         try {
@@ -38,7 +38,7 @@ public class CrawlerConfigTest {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             //释放资源
             try {
                 response.close();

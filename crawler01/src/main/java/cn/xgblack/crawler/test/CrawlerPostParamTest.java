@@ -44,7 +44,7 @@ public class CrawlerPostParamTest {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             //释放资源
             try {
                 response.close();

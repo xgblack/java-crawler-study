@@ -1,19 +1,18 @@
-package cn.xgblack.crawler.dao;
+package cn.xgblack.crawler.mapper;
 
-import cn.xgblack.crawler.entity.JdItem;
+import cn.xgblack.crawler.entity.JobInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 /**
- * 京东商品表(JdItem)表数据库访问层
+ * 招聘信息(JobInfo)表数据库访问层
  *
- * @author makejava
- * @since 2020-02-14 21:09:25
+ * @author xgBLACK
+ * @since 2020-02-16 20:19:41
  */
 @Mapper
-public interface JdItemDao {
+public interface JobInfoDao {
 
     /**
      * 通过ID查询单条数据
@@ -21,41 +20,41 @@ public interface JdItemDao {
      * @param id 主键
      * @return 实例对象
      */
-    JdItem queryById(Long id);
+    JobInfo queryById(Long id);
 
     /**
      * 查询指定行数据
      *
      * @param offset 查询起始位置
-     * @param limit  查询条数
+     * @param limit 查询条数
      * @return 对象列表
      */
-    List<JdItem> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<JobInfo> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param jdItem 实例对象
+     * @param jobInfo 实例对象
      * @return 对象列表
      */
-    List<JdItem> queryAll(JdItem jdItem);
+    List<JobInfo> queryAll(JobInfo jobInfo);
 
     /**
      * 新增数据
      *
-     * @param jdItem 实例对象
+     * @param jobInfo 实例对象
      * @return 影响行数
      */
-    int insert(JdItem jdItem);
+    int insert(JobInfo jobInfo);
 
     /**
      * 修改数据
      *
-     * @param jdItem 实例对象
+     * @param jobInfo 实例对象
      * @return 影响行数
      */
-    int update(JdItem jdItem);
+    int update(JobInfo jobInfo);
 
     /**
      * 通过主键删除数据

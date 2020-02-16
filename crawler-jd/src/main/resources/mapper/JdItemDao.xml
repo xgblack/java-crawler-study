@@ -17,7 +17,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="JdItemMap">
         select
-          id, spu, sku, title, price, pic, url, created, updated
+        id, spu, sku, title, price, pic, url, created, updated
         from crawlerstu.jd_item
         where id = #{id}
     </select>
@@ -25,7 +25,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="JdItemMap">
         select
-          id, spu, sku, title, price, pic, url, created, updated
+        id, spu, sku, title, price, pic, url, created, updated
         from crawlerstu.jd_item
         limit #{offset}, #{limit}
     </select>
@@ -33,7 +33,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="JdItemMap">
         select
-          id, spu, sku, title, price, pic, url, created, updated
+        id, spu, sku, title, price, pic, url, created, updated
         from crawlerstu.jd_item
         <where>
             <if test="id != null">

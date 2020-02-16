@@ -125,7 +125,7 @@ public class JsoupFirstTest {
             System.out.println(e.text());
         }
     }
-    
+
     @Test
     public void testSelector2() throws IOException {
         Document doc = Jsoup.parse(new File("src/main/resources/test.html"), "utf8");

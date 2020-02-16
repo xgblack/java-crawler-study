@@ -19,40 +19,40 @@ import java.io.Serializable;
 public class JdItem implements Serializable {
     private static final long serialVersionUID = -41827931978978651L;
     /**
-    * 主键id
-    */
+     * 主键id
+     */
     private Long id;
     /**
-    * 商品集合id
-    */
+     * 商品集合id
+     */
     private Long spu;
     /**
-    * 商品最小品类单元id
-    */
+     * 商品最小品类单元id
+     */
     private Long sku;
     /**
-    * 商品标题
-    */
+     * 商品标题
+     */
     private String title;
     /**
-    * 商品价格
-    */
+     * 商品价格
+     */
     private Double price;
     /**
-    * 商品图片
-    */
+     * 商品图片
+     */
     private String pic;
     /**
-    * 商品详情地址
-    */
+     * 商品详情地址
+     */
     private String url;
     /**
-    * 创建时间
-    */
+     * 创建时间
+     */
     private Date created;
     /**
-    * 更新时间
-    */
+     * 更新时间
+     */
     private Date updated;
 
 

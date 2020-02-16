@@ -34,10 +34,11 @@ public class HttpUtils {
 
     /**
      * 根据请求地址下载页面数据
+     *
      * @param url 链接
      * @return HTML字符串
      */
-    public String doGetHtml(String url){
+    public String doGetHtml(String url) {
         //获取HTTPClient对象
         CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(this.cm).build();
         //设置HTTPGet对象
@@ -45,7 +46,7 @@ public class HttpUtils {
         //设置请求信息
         httpGet.setConfig(this.getConfig());
         //设置请求头模拟浏览器
-        httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0");
+        httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0");
         httpGet.addHeader("Cookie", "__jda=122xxxxxxxx");
 
 
@@ -62,7 +63,7 @@ public class HttpUtils {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (response != null) {
                 try {
                     response.close();
@@ -76,9 +77,9 @@ public class HttpUtils {
     }
 
 
-
     /**
      * 下载图片
+     *
      * @param url 链接
      * @return 图片名称
      */
@@ -91,7 +92,7 @@ public class HttpUtils {
         //设置请求信息
         httpGet.setConfig(this.getConfig());
         //设置请求头模拟浏览器
-        httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0");
+        httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0");
         httpGet.addHeader("Cookie", "__jda=122xxxxxxxx");
         CloseableHttpResponse response = null;
         try {
@@ -115,7 +116,7 @@ public class HttpUtils {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (response != null) {
                 try {
                     response.close();

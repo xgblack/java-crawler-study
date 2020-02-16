@@ -37,8 +37,9 @@ public class JdItemController {
     public void save(JdItem jdItem) {
         this.jdItemService.insert(jdItem);
     }
+
     @GetMapping("findAll")
-    public List<JdItem> findAll(JdItem jdItem){
+    public List<JdItem> findAll(JdItem jdItem) {
         return this.jdItemService.queryAll(jdItem);
     }
 

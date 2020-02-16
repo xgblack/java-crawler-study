@@ -45,7 +45,7 @@ public class HttpClientPoolTest {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (response != null) {
                 try {
                     response.close();

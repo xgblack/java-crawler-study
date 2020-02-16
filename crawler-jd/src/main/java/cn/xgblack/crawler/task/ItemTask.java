@@ -34,7 +34,7 @@ public class ItemTask {
 
     //当下载任务完成后，间隔多长时间进行下一次任务
     @Scheduled(fixedDelay = 300 * 1000)
-    public void itemTask(){
+    public void itemTask() {
         //声明需要解析的初始地址
         String url = "http://search.jd.com/Search?keyword=手机&enc=utf-8&qrst=1&rt=1&stop=1&vt=2&wq=手机&s=340&click=0&page=";
         //下载页 page=1,3,5,7,9

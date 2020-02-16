@@ -16,24 +16,24 @@ public class JobProcesson implements PageProcessor {
 
     public void process(Page page) {
         //解析page，并且把解析结果放到ResultItems中
-        page.putField("as",page.getHtml().css("div.hotnews li a").all());
+        page.putField("as", page.getHtml().css("div.hotnews li a").all());
 
         //Xpath
-        page.putField("a2",page.getHtml().xpath("//div[@id=headline-tabs]/ul/li/a"));
+        page.putField("a2", page.getHtml().xpath("//div[@id=headline-tabs]/ul/li/a"));
 
         //正则表达式
-        page.putField("as3",page.getHtml().css("div.mod-tab-content a").regex(".*http.*").all());
+        page.putField("as3", page.getHtml().css("div.mod-tab-content a").regex(".*http.*").all());
 
         //处理结果的api
-        page.putField("as4",page.getHtml().css("div.mod-tab-content a").regex(".*http.*"));
-        page.putField("as5",page.getHtml().css("div.mod-tab-content a").regex(".*http.*").get());
-        page.putField("as6",page.getHtml().css("div.mod-tab-content a").regex(".*http.*").toString());
+        page.putField("as4", page.getHtml().css("div.mod-tab-content a").regex(".*http.*"));
+        page.putField("as5", page.getHtml().css("div.mod-tab-content a").regex(".*http.*").get());
+        page.putField("as6", page.getHtml().css("div.mod-tab-content a").regex(".*http.*").toString());
 
         //获取链接
         //page.addTargetRequests(page.getHtml().css("div.mod-tab-content a").links().regex(".+news\\.cctv\\.com.*").all());
         //page.putField("【h1】",page.getHtml().$("#title_area > h1").all());
         page.addTargetRequests(page.getHtml().css("div.mod-tab-content a").links().all());
-        page.putField("【h1】",page.getHtml().$("h1").all());
+        page.putField("【h1】", page.getHtml().$("h1").all());
     }
 
     private Site site = Site.me()

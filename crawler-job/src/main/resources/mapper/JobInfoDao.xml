@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xgblack.crawler.mapper.JobInfoDao">
+
+    <resultMap type="cn.xgblack.crawler.entity.JobInfo" id="JobInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="companyName" column="company_name" jdbcType="VARCHAR"/>
+        <result property="companyAddr" column="company_addr" jdbcType="VARCHAR"/>
+        <result property="companyInfo" column="company_info" jdbcType="VARCHAR"/>
+        <result property="jobName" column="job_name" jdbcType="VARCHAR"/>
+        <result property="jobAddr" column="job_addr" jdbcType="VARCHAR"/>
+        <result property="jobInfo" column="job_info" jdbcType="VARCHAR"/>
+        <result property="salaryMin" column="salary_min" jdbcType="INTEGER"/>
+        <result property="salaryMax" column="salary_max" jdbcType="INTEGER"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="JobInfoMap">
+        select
+          id, company_name, company_addr, company_info, job_name, job_addr, job_info, salary_min, salary_max, url, time
+        from crawlerstu.job_info
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="JobInfoMap">
+        select
+          id, company_name, company_addr, company_info, job_name, job_addr, job_info, salary_min, salary_max, url, time
+        from crawlerstu.job_info
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="JobInfoMap">
+        select
+          id, company_name, company_addr, company_info, job_name, job_addr, job_info, salary_min, salary_max, url, time
+        from crawlerstu.job_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="companyName != null and companyName != ''">
+                and company_name = #{companyName}
+            </if>
+            <if test="companyAddr != null and companyAddr != ''">
+                and company_addr = #{companyAddr}
+            </if>
+            <if test="companyInfo != null and companyInfo != ''">
+                and company_info = #{companyInfo}
+            </if>
+            <if test="jobName != null and jobName != ''">
+                and job_name = #{jobName}
+            </if>
+            <if test="jobAddr != null and jobAddr != ''">
+                and job_addr = #{jobAddr}
+            </if>
+            <if test="jobInfo != null and jobInfo != ''">
+                and job_info = #{jobInfo}
+            </if>
+            <if test="salaryMin != null">
+                and salary_min = #{salaryMin}
+            </if>
+            <if test="salaryMax != null">
+                and salary_max = #{salaryMax}
+            </if>
+            <if test="url != null and url != ''">
+                and url = #{url}
+            </if>
+            <if test="time != null and time != ''">
+                and time = #{time}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into crawlerstu.job_info(company_name, company_addr, company_info, job_name, job_addr, job_info, salary_min, salary_max, url, time)
+        values (#{companyName}, #{companyAddr}, #{companyInfo}, #{jobName}, #{jobAddr}, #{jobInfo}, #{salaryMin}, #{salaryMax}, #{url}, #{time})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update crawlerstu.job_info
+        <set>
+            <if test="companyName != null and companyName != ''">
+                company_name = #{companyName},
+            </if>
+            <if test="companyAddr != null and companyAddr != ''">
+                company_addr = #{companyAddr},
+            </if>
+            <if test="companyInfo != null and companyInfo != ''">
+                company_info = #{companyInfo},
+            </if>
+            <if test="jobName != null and jobName != ''">
+                job_name = #{jobName},
+            </if>
+            <if test="jobAddr != null and jobAddr != ''">
+                job_addr = #{jobAddr},
+            </if>
+            <if test="jobInfo != null and jobInfo != ''">
+                job_info = #{jobInfo},
+            </if>
+            <if test="salaryMin != null">
+                salary_min = #{salaryMin},
+            </if>
+            <if test="salaryMax != null">
+                salary_max = #{salaryMax},
+            </if>
+            <if test="url != null and url != ''">
+                url = #{url},
+            </if>
+            <if test="time != null and time != ''">
+                time = #{time},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from crawlerstu.job_info where id = #{id}
+    </delete>
+
+</mapper>
