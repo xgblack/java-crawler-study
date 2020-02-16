@@ -38,7 +38,7 @@ public class ItemTask {
         //声明需要解析的初始地址
         String url = "http://search.jd.com/Search?keyword=手机&enc=utf-8&qrst=1&rt=1&stop=1&vt=2&wq=手机&s=340&click=0&page=";
         //下载页 page=1,3,5,7,9
-        for (int i = 1; i < 12; i = i + 2) {
+        for (int i = 1; i < 10; i = i + 2) {
             System.out.println("开始爬取第" + (i / 2 + 1) + "页... >" + url + i);
             String html = httpUtils.doGetHtml(url + i);
             //解析页面，获取商品数据并存储
